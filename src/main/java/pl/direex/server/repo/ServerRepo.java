@@ -9,5 +9,5 @@ public interface ServerRepo extends JpaRepository<Server, Long> {
 
     Server findByIpAddress(String ipAddress); // zwróci Server. findBy.. JPA automatycznie sprawdzi co ma wyszukać na podstawie ip.
 
-    Server findByName(String name); // zwróci Server na podstawie name.
+//    Server findByName(String name); // zwróci Server na podstawie name. Żeby to zadziałało to w klasie Server w polu name należy dodać adnotację @Column(unique = true). Inaczej zwróci wyjątek, ponieważ kilka serwerów może mieć taką samą nazwę.
 }
