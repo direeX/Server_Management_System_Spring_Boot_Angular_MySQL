@@ -4,7 +4,7 @@ package pl.direex.server.enumeration;
 
  */
 public enum Status {
-    SERVER_IP("SERVER_UP"),
+    SERVER_UP("SERVER_UP"),
     SERVER_DOWN("SERVER_DOWN");
     private final String status; // pole prywatne, finalne typu String status.
 
