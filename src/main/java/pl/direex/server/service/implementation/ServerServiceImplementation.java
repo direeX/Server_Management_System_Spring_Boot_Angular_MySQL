@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.direex.server.enumeration.Status;
 import pl.direex.server.model.Server;
 import pl.direex.server.repo.ServerRepo;
@@ -13,6 +14,7 @@ import pl.direex.server.service.ServerService;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.Collection;
+import java.util.Random;
 
 import static java.lang.Boolean.TRUE;
 //@RequiredArgsConstructor to adnotacja dostarczana przez bibliotekę Lombok w języku Java. Adnotacja ta automatycznie generuje konstruktor dla klas, który zawiera finalne pola (pola oznaczone jako final) lub pola oznaczone adnotacją @NonNull. Konstruktor ten pozwala na wstrzyknięcie wartości tych pól w momencie tworzenia obiektu.
@@ -80,7 +82,10 @@ public class ServerServiceImplementation implements ServerService {
         return TRUE;
     }
     private String setServerImageUrl() {
-        return null;
+//        orazy serwerów pobrane z https://www.flaticon.com/
+        String[] imageNames = { "server1.png", "server2.png","server3.png","server4.png", };
+        return ServletUriComponentsBuilder.fromCurrentContextPath().path("/server/image/" + imageNames[new Random().nextInt(4)]).toUriString();
+        // zwróci ścieżkę do obrazka serwera. Wybierze losowo jeden z czterech obrazów.
     }
 //    <a href="https://www.flaticon.com/free-icons/server" title="server icons">Server icons created by Freepik - Flaticon</a>
 }
